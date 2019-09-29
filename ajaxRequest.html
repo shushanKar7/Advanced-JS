@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Ajax Request</title>
+  <style>
+    button {
+      padding: 6px;
+      background-color: #f3f3f3;
+      border: 2px solid #e76cd7;
+      cursor: pointer;
+      border-radius: 6%
+    }
+
+    button:hover {
+      background-color: lightpink;
+
+    }
+
+    #loader {
+      border: 10px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 10px solid #e76cd7;
+      width: 50px;
+      height: 50px;
+      animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+      50% {
+        transform: rotate(660deg);
+      }
+
+      100% {
+        transform: rotate(460deg);
+      }
+    }
+  </style>
+</head>
+
+
+<div id="container">
+  <div id="loader"></div>
+  <div class="forP">
+    <p id="text1"></p>
+    <p id="text2"></p>
+    <p id="text3"></p>
+  </div>
+  <button type="button" onclick="loadDoc()" id="button">Request data</button>
+</div>
+
+
+<script>
+  var div = document.getElementById("loader")
+  div.remove()
+
+  function loadDoc() {
+    let button = document.getElementById("button")
+    button.innerHTML = "I'm making request"
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+      let data = this.responseText
+      if (this.readyState !== 4) {
+        let divCont = document.getElementById("container")
+        divCont.appendChild(div)
+      } else if (this.readyState == 4) {
+        div.remove()
+        let data1 = JSON.parse(this.responseText)
+        document.getElementById("text1").innerHTML = "Your name is: " + data1.name
+        document.getElementById("text2").innerHTML = "Your age is: " + data1.age
+        document.getElementById("text3").innerHTML = "Your ID is: " + data1.id
+      }
+    };
+    xhttp.open("POST", "http://rest.learncode.academy/api/johnbob/friends", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send(JSON.stringify({
+      name: "Shushan",
+      age: 22,
+      id: ""
+    }));
+  }
+</script>
+</body>
+
+</html>
