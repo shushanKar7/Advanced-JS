@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+​
+​
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Random change</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    .color1 {
+      color: blue;
+    }
+
+    .color2 {
+      color: pink;
+    }
+
+    .color3 {
+      color: yellow;
+    }
+
+    .color4 {
+      color: grey;
+    }
+
+    .color5 {
+      color: red;
+    }
+  </style>
+</head>
+​
+
+<body>
+  <div id="container"></div>
+  <script>
+    //Changes numbers randomly
+    let div = document.getElementById("container")
+    let p1 = document.createElement("p")
+      p1.textContent = "Changing numbers randomly"
+      p1.style.fontSize="1.2em"
+      div.appendChild(p1)
+    let arr = [1, 2, 3, 4, 5]
+    for (let i = 0; i < 5; i++) {
+      let p = document.createElement("p")
+      p.textContent = Math.floor(Math.random() * 100)
+      p.className = `color${arr[i]}`;
+      div.appendChild(p)
+    }
+    let p2 = document.createElement("p")
+      p2.textContent = "Changing colors randomly"
+      p2.style.fontSize="1.2em"
+      div.appendChild(p2)
+    //Changes colors randomly
+    let arr1 = [1, 2, 3, 4, 5]
+    let div1 = document.getElementById("container")
+    for (let i = 0; i < 5; i++) {
+      let par = document.createElement("p")
+      par.textContent = Math.floor(Math.random() * 100)
+      par.className = `color${Math.floor(Math.random() * 5)}`;
+      div1.appendChild(par)
+    }
+  </script>
+</body>
+​
+
+</html>
