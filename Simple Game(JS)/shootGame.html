@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+​
+​
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Shoot</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .picWrapper {
+            display: flex;
+            margin: auto;
+        }
+
+        .gun {
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: scroll;
+            background-size: 100% 100%;
+            width: 40%;
+            height: 40%;
+            content: url(gun.jpg);
+        }
+
+        .bullit {
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: scroll;
+            background-size: 100% 100%;
+            width: 8%;
+            height: 8%;
+            content: url(bullit2.jpg);
+            margin-top: 17.1%;
+            animation-name: example;
+            animation-duration: 1s;
+            /* animation-delay: 2s; */
+            position: absolute;
+            left: 34%;
+            /* display: none; */
+        }
+
+        @keyframes example {
+            100% {
+                left: 54%;
+            }
+        }
+
+        .person {
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: scroll;
+            background-size: 100% 100%;
+            width: 17%;
+            height: 17%;
+            content: url(pic3.jpg);
+            margin-top: 5.9%;
+            position: relative;
+            left: 21.8%;
+        }
+        
+        .gameButton {
+            background-color: #f3e528;
+            border-radius: 28px;
+            border: 1px solid #000501;
+            cursor: pointer;
+            font-family: Arial;
+            padding: 10px 20px;
+            text-decoration: none;
+            text-shadow: 0px 1px 0px #2f6627;
+            position: relative;
+            left: 15%;
+
+        }
+
+        .gameButton:active {
+            position: relative;
+            top: 1px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="picWrapper">
+            <div class="gun"></div>
+            <div id="wrapper">
+                <div class="bullit" id="shot"></div>
+            </div>
+            <div class="person" id="person"></div>
+        </div>
+   <button class="gameButton" onclick="gunShot()">SHOOT</button>
+    </div>
+    <script>
+        let bullit = document.getElementById("shot")
+        let wrapper = document.getElementById("wrapper")
+        let person = document.getElementById("person")
+        bullit.remove()
+
+        function gunShot() {
+            wrapper.appendChild(bullit)
+            bullit.addEventListener("animationend", gunShotEnd);
+
+            function gunShotEnd() {
+                wrapper.removeChild(bullit)
+                person.style.transform = "rotate(90deg)"
+            }
+        }
+    </script>
+</body>
+​
+
+</html>
