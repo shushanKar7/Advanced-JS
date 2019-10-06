@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+​
+​
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Shop Items</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        h1 {
+            text-align: center;
+            color: #113944;
+        }
+
+        .picWrapper {
+            margin-top: 5%;
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        div.picWrapper * {
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: scroll;
+            background-size: 100% 100%;
+            width: 20%;
+            height: 20%;
+        }
+
+        div.picWrapper *:hover {
+            border: 1px solid #415094;
+        }
+
+        .firstPic {
+            content: url(firstPic.jpg);
+        }
+
+        .secondPic {
+            content: url(secondPic.jpg);
+        }
+
+        .thirdPic {
+            content: url(thirdPic.jpg);
+        }
+
+        .allButtons {
+            margin-top: 3%;
+            display: flex;
+            justify-content: space-evenly
+        }
+
+        div.allButtons * {
+            box-shadow: 3px 4px 0px 0px #899599;
+            background: linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
+            background-color: #415094;
+            border-radius: 15px;
+            border: 1px solid #415094;
+            display: inline-block;
+            cursor: pointer;
+            color: #113944;
+            font-family: Arial;
+            font-size: 17px;
+            padding: 20px 65px;
+            text-decoration: none;
+            text-shadow: 0px 1px 0px #e1e2ed;
+        }
+
+        div.allButtons *:hover {
+            background: linear-gradient(to bottom, #bab1ba 5%, #ededed 100%);
+            background-color: #415094;
+        }
+
+        div.allButtons *:active {
+            position: relative;
+            top: 1px;
+        }
+
+        div.texts {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 1.5%
+        }
+        div.texts *{
+           color: #113944;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Smart Clothes</h1>
+        <div class="picWrapper">
+            <div class="firstPic"></div>
+            <div class="secondPic"></div>
+            <div class="thirdPic"></div>
+        </div>
+        <div class="allButtons">
+            <button class="firstButton" onclick="getDetails()">Get Details</button>
+            <button class="secondButton" onclick="getDetails1()">Get Details</button>
+            <button class="thirdButton" onclick="getDetails2()">Get Details</button>
+        </div>
+        <div class="texts">
+            <p id="text"></p>
+            <p id="text1"></p>
+            <p id="text2"></p>
+        </div>
+    </div>​
+
+
+    <script>
+        function Product(name, brand, price) {
+            this.name = name;
+            this.brand = brand;
+            this.price = price
+        }
+
+        function Bag(name, brand, price) {
+            Product.call(this, name, brand, price)
+        }
+
+        function Shoes(name, brand, price) {
+            Product.call(this, name, brand, price)
+        }
+
+        function Hat(name, brand, price) {
+            Product.call(this, name, brand, price)
+        }
+
+        let bag = new Bag("Tarvel computer bag", "Mancro", "$28")
+        console.log(bag)
+        let shoes = new Shoes("Smart Trainers", "Nike", "$40")
+        console.log(shoes)
+        let hat = new Hat("Smart hat", "ZEROi", "$1335")
+        console.log(hat)
+
+        function getDetails() {
+            document.getElementById("text").innerHTML = (`This product name is: ${bag.name}<br/>
+      This product brand is: ${bag.brand}<br/>This product price is: ${bag.price} `)
+        }
+
+        function getDetails1() {
+            document.getElementById("text1").innerHTML = (`This product name is: ${shoes.name}<br/>
+      This product brand is: ${shoes.brand}<br/>This product price is: ${shoes.price} `)
+        }
+
+        function getDetails2() {
+            document.getElementById("text2").innerHTML = (`This product name is: ${hat.name}<br/>
+      This product brand is: ${hat.brand}<br/>This product price is: ${hat.price} `)
+        }
+    </script>
+</body>
+​
+
+</html>
+
